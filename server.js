@@ -31,7 +31,7 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database
 mongoose
-  .connect(config.url, {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true
   })
   .then(() => {
@@ -48,6 +48,6 @@ app.get("/", (req, res) => {
 });
 
 // listen on port 3000
-app.listen(config.serverport, () => {
-  console.log(`Server is listening on port ${config.serverport}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is listening on port ${process.env.PORT}`);
 });
