@@ -23,7 +23,6 @@ app.use(function(req, res, next) {
 });
 
 // Configuring the database
-const config = require("./config.js");
 const mongoose = require("mongoose");
 require("./routes/picnic.routes")(app);
 
