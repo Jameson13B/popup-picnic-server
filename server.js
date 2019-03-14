@@ -25,6 +25,7 @@ app.use(function(req, res, next) {
 // Configuring the database
 const mongoose = require("mongoose");
 require("./routes/picnic.routes")(app);
+require("./routes/user.routes")(app);
 
 mongoose.Promise = global.Promise;
 
@@ -43,7 +44,7 @@ mongoose
 
 // default route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to ZeptoBook Product app" });
+  res.json({ message: "Welcome to Popup Picnic Server" });
 });
 
 // listen on port 3000
