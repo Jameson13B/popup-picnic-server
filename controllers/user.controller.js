@@ -28,28 +28,29 @@ exports.register = (req, res) => {
 };
 
 // Login single user with uId
-// exports.login = (req, res) => {
-//   Picnic.findById(req.params.picnicId)
-//     .then(picnic => {
-//       if (!picnic) {
-//         return res.status(404).send({
-//           message: "Picnic not found with id " + req.params.picnicId
-//         });
-//       }
-//       res.send(picnic);
-//     })
-//     .catch(err => {
-//       if (err.kind === "ObjectId") {
-//         return res.status(404).send({
-//           message: "Product not found with id " + req.params.picnicId
-//         });
-//       }
-//       return res.status(500).send({
-//         message:
-//           "Something wrong retrieving product with id " + req.params.picnicId
-//       });
-//     });
-// };
+exports.login = (req, res) => {
+  User.findById(req.headers.authorization)
+    .then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: "User not found with id " + req.headers.authorization
+        });
+      }
+      res.send(user);
+    })
+    .catch(err => {
+      if (err.kind === "ObjectId") {
+        return res.status(404).send({
+          message: "User not found with id " + req.headers.authorization
+        });
+      }
+      return res.status(500).send({
+        message:
+          "Something wrong retrieving authorization with id " +
+          req.headers.authorization
+      });
+    });
+};
 
 // Retrieve all picnics
 exports.findAll = (req, res) => {
