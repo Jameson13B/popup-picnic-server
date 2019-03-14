@@ -10,7 +10,7 @@ exports.register = (req, res) => {
   }
   // Create a User
   const user = new User({
-    uid: req.body.uid,
+    _id: req.body.uid,
     email: req.body.email,
     name: req.body.name
   });
@@ -27,7 +27,7 @@ exports.register = (req, res) => {
     });
 };
 
-// Find a single picnic with a picnicId
+// Login single user with uId
 // exports.login = (req, res) => {
 //   Picnic.findById(req.params.picnicId)
 //     .then(picnic => {

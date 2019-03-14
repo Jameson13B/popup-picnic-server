@@ -4,7 +4,7 @@ const UserSchema = mongoose.Schema(
   {
     name: String,
     email: String,
-    uid: Number
+    _id: Number
   },
   {
     timestamps: true
