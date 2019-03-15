@@ -10,7 +10,7 @@ exports.register = (req, res) => {
   }
   // Create a User
   const user = new User({
-    _id: req.body.uid,
+    uid: req.body.uid,
     email: req.body.email,
     name: req.body.name
   });
