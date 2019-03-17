@@ -8,11 +8,11 @@ module.exports = app => {
   app.get("/picnics", picnics.findAll);
 
   // Retrieve a single Picnic with picnicId
-  app.get("/picnics/:productId", picnics.findOne);
+  app.get("/picnics/:picnicId", picnics.findOne);
 
   // Update a Picnic with picnicId
-  app.put("/picnics/:productId", picnics.update);
+  app.put("/picnics/:picnicId", picnics.update);
 
   // Delete a Picnic with picnicId
-  app.delete("/picnics/:productId", picnics.delete);
+  app.delete("/picnics/:picnicId", picnics.delete);
 };

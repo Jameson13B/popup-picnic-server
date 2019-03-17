@@ -4,7 +4,8 @@ const UserSchema = mongoose.Schema(
   {
     name: String,
     email: String,
-    uid: String
+    uid: String,
+    picnics: [{ type: Schema.Types.ObjectId, ref: "Picnics" }]
   },
   {
     timestamps: true
