@@ -29,7 +29,7 @@ exports.register = (req, res) => {
 
 // Login single user with uId
 exports.login = (req, res) => {
-  User.findById(req.headers.authorization)
+  User.findOne({ uid: req.headers.authorization })
     .then(user => {
       if (!user) {
         return res.status(404).send({
