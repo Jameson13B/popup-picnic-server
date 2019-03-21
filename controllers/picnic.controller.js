@@ -1,4 +1,5 @@
 const Picnic = require("../models/picnic.model.js");
+const User = require("../models/user.model.js");
 
 // Create new Picnic
 exports.create = (req, res) => {
@@ -44,6 +45,7 @@ exports.findAll = (req, res) => {
 // Find a single picnic with a picnicId
 exports.findOne = (req, res) => {
   Picnic.findById(req.params.picnicId)
+    .populate("attendees")
     .then(picnic => {
       if (!picnic) {
         return res.status(404).send({
@@ -126,4 +128,36 @@ exports.delete = (req, res) => {
         message: "Could not delete product with id " + req.params.picnicId
       });
     });
+};
+
+// Join a picnic with picnicId and _id
+exports.join = (req, res) => {
+  try {
+    User.findByIdAndUpdate(
+      req.body._id,
+      { $push: { picnics: req.params.picnicId } },
+      { new: true }
+    )
+      .then(() => {
+        Picnic.findByIdAndUpdate(
+          req.params.picnicId,
+          { $push: { attendees: req.body._id } },
+          { new: true }
+        )
+          .populate("attendees")
+          .then(picnic => {
+            res.send({ picnic });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  } catch (err) {
+    res.status(500).send({
+      message: "Could not complete picnic join request"
+    });
+  }
 };

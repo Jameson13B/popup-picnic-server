@@ -7,7 +7,7 @@ const PicnicSchema = mongoose.Schema(
     description: String,
     location: String,
     date: Number,
-    attendees: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    attendees: [{ type: Schema.Types.ObjectId, ref: "Users" }]
   },
   {
     timestamps: true

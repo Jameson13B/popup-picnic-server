@@ -15,4 +15,7 @@ module.exports = app => {
 
   // Delete a Picnic with picnicId
   app.delete("/picnics/:picnicId", picnics.delete);
+
+  // Join a Picnic
+  app.patch("/picnics/join/:picnicId", picnics.join);
 };
