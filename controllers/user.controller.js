@@ -30,6 +30,7 @@ exports.register = (req, res) => {
 // Login single user with uId
 exports.login = (req, res) => {
   User.findOne({ uid: req.headers.authorization })
+    .populate("picnics")
     .then(user => {
       if (!user) {
         return res.status(404).send({
@@ -52,7 +53,7 @@ exports.login = (req, res) => {
     });
 };
 
-// Retrieve all picnics
+// Retrieve all users
 exports.findAll = (req, res) => {
   User.find()
     .then(users => {
