@@ -29,7 +29,9 @@ exports.register = (req, res) => {
 
 // Login single user with uId
 exports.login = (req, res) => {
+  // Find user using uid in header
   User.findOne({ uid: req.headers.authorization })
+    // Populate info for picnics user is attending
     .populate("picnics")
     .then(user => {
       if (!user) {

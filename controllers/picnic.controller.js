@@ -133,17 +133,20 @@ exports.delete = (req, res) => {
 // Join a picnic with picnicId and _id
 exports.join = (req, res) => {
   try {
+    // Find User by _id and push picnicId
     User.findByIdAndUpdate(
       req.body._id,
       { $push: { picnics: req.params.picnicId } },
       { new: true }
     )
       .then(() => {
+        // Find Picnic by picnicId and push _id
         Picnic.findByIdAndUpdate(
           req.params.picnicId,
           { $push: { attendees: req.body._id } },
           { new: true }
         )
+          // Populate user info on picnic
           .populate("attendees")
           .then(picnic => {
             res.send({ picnic });
