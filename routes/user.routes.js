@@ -11,8 +11,8 @@ module.exports = app => {
   app.get("/users", users.findAll);
 
   // Update a User with userId
-  // app.put("/users/:productId", users.update);
+  app.put("/users/:_id", users.update);
 
   // Delete a User with userId
-  // app.delete("/users/:productId", users.delete);
+  app.delete("/users/:_id", users.delete);
 };
