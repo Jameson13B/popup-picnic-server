@@ -6,5 +6,8 @@ This is the server for Popup Picnics. It is used to interact with database with 
 >
 > Documentation for Picnic Routes - [Picnic Docs](docs/picnics.md)
 
-[GitHub for Back End](https://github.com/Jameson13B/popup-picnic-server)
+Our API documentation is published online as well.  
+[Online API Documentation](https://documenter.getpostman.com/view/4923676/S17rvTkt)
+
+[GitHub for Back End](https://github.com/Jameson13B/popup-picnic-server)  
 [GitHub for Front End](https://github.com/Jameson13B/popup-picnic)
